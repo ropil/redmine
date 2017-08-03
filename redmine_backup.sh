@@ -55,9 +55,12 @@ redmine_db=$3;
 redmine_root=$4;
 backup_root=$5;
 
+# Seconds since this morning
+let seconds=`date +%s`-`date --date="00:00 today" +%s`;
+
 # Set default values
 if [ -z ${BACKUP_NAME} ]; then
-  BACKUP_NAME="`date +%Y%m%d`_redmine_backup";
+  BACKUP_NAME="`date +%Y%m%d`_${seconds}_redmine_backup";
 fi
 
 # Create dir
